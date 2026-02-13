@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- =====================================================
+     МЕТА-ДАННЫЕ САЙТА — измените название вкладки здесь
+     ===================================================== -->
+<title>Студия цветов & праздника 101 — Цветочный магазин</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* =====================================================
+   ЦВЕТА — измените здесь для смены цветовой гаммы
+   ===================================================== */
+:root {
+  --lavender:       #c9b8e8;
+  --lavender-light: #e8e0f5;
+  --lavender-deep:  #9b84c9;
+  --cream:          #fdf8f2;
+  --cream-warm:     #f5ede0;
+  --blush:          #f0d9d5;
+  --text-dark:      #3a2e3f;
+  --text-mid:       #7a6880;
+  --text-light:     #b0a0bc;
+  --white:          #ffffff;
+  --shadow:         rgba(155, 132, 201, 0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* ── Декоративный узор фона ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(201,184,232,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(240,217,213,0.2) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─────────────── НАВИГАЦИЯ ─────────────── */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 18px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(253, 248, 242, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,184,232,0.3);
+  transition: all 0.3s ease;
+}
+
+/* =====================================================
+   НАЗВАНИЕ МАГАЗИНА В НАВИГАЦИИ
+   ===================================================== */
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: 0.03em;
+}
+
+.nav-logo span { color: var(--lavender-deep); font-style: italic; }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--lavender-deep); }
+
+/* ─────────────── HERO ─────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 5% 80px;
+  position: relative;
+}
+
+.hero-petals {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.petal {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.35;
+  animation: float linear infinite;
+}
+
+@keyframes float {
+  0%   { transform: translateY(-60px) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.35; }
+  90%  { opacity: 0.35; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 780px; }
+
+.hero-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--lavender-deep);
+  margin-bottom: 20px;
+  border: 1px solid var(--lavender);
+  padding: 6px 18px;
+  border-radius: 50px;
+  background: rgba(201,184,232,0.1);
+}
+
+/* =====================================================
+   ГЛАВНЫЙ ЗАГОЛОВОК (НАЗВАНИЕ МАГАЗИНА В HERO)
+   ===================================================== */
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--lavender-deep);
+}
+
+/* =====================================================
+   ПОДЗАГОЛОВОК / СЛОГАН
+   ===================================================== */
+.hero-sub {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto 40px;
+  letter-spacing: 0.04em;
+}
+
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+.btn-primary {
+  padding: 14px 36px;
+  background: var(--lavender-deep);
+  color: var(--white);
+  border: none;
+  border-radius: 50px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 30px var(--shadow);
+}
+
+.btn-primary:hover {
+  background: var(--text-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(58,46,63,0.2);
+}
+
+.btn-outline {
+  padding: 14px 36px;
+  background: transparent;
+  color: var(--lavender-deep);
+  border: 1.5px solid var(--lavender);
+  border-radius: 50px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: var(--lavender-light);
+  border-color: var(--lavender-deep);
+}
+
+/* ─────────────── SCROLL INDICATOR ─────────────── */
+.scroll-hint {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-light);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, var(--lavender), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.2); }
+}
+
+/* ─────────────── СЕКЦИЯ-РАЗДЕЛИТЕЛЬ ─────────────── */
+.section { padding: 90px 5%; position: relative; }
+.section-alt { background: var(--cream-warm); }
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--lavender-deep);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 300;
+  color: var(--text-dark);
+  line-height: 1.15;
+}
+
+.section-title em { font-style: italic; color: var(--lavender-deep); }
+
+.section-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--lavender-deep), transparent);
+  margin: 20px auto 0;
+}
+
+/* ─────────────── О НАС ─────────────── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-img-wrap {
+  position: relative;
+}
+
+.about-img-frame {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--lavender-light), var(--blush));
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-img-frame::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border: 1px solid var(--lavender);
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  opacity: 0.5;
+}
+
+.about-badge {
+  position: absolute;
+  bottom: 20px;
+  right: -20px;
+  background: var(--white);
+  padding: 16px 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px var(--shadow);
+  text-align: center;
+}
+
+.about-badge-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--lavender-deep);
+  display: block;
+  line-height: 1;
+}
+
+.about-badge-text {
+  font-size: 0.7rem;
+  color: var(--text-mid);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* =====================================================
+   ТЕКСТ "О НАС" — замените содержимое ниже
+   ===================================================== */
+.about-text h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 300;
+  margin-bottom: 20px;
+  color: var(--text-dark);
+  line-height: 1.2;
+}
+
+.about-text p {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  line-height: 1.9;
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+
+.about-features {
+  display: flex;
+  gap: 24px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.about-feat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  letter-spacing: 0.05em;
+}
+
+.feat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lavender-deep);
+  flex-shrink: 0;
+}
+
+/* ─────────────── КАТАЛОГ ─────────────── */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =====================================================
+   КАРТОЧКИ КАТАЛОГА
+   Чтобы добавить/убрать товар — найдите блок ниже:
+   <!-- ТОВАР --> ... <!-- /ТОВАР -->
+   и скопируйте/удалите нужный блок
+   ===================================================== */
+.product-card {
+  background: var(--white);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(155,132,201,0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(155,132,201,0.2);
+}
+
+.product-img {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-img::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(255,255,255,0.6), transparent);
+}
+
+.product-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--lavender-deep);
+  color: var(--white);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 50px;
+}
+
+.product-tag.new { background: #e8a0b0; }
+
+.product-body { padding: 20px 22px 22px; }
+
+.product-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.product-desc {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--lavender-deep);
+}
+
+/* =====================================================
+   ВАЛЮТА — изменить здесь (используется в JS ниже)
+   var CURRENCY = "₽"; или "₴" или "€"
+   ===================================================== */
+
+.product-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--lavender-light);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lavender-deep);
+  font-size: 1.2rem;
+  transition: all 0.3s;
+}
+
+.product-btn:hover {
+  background: var(--lavender-deep);
+  color: var(--white);
+  transform: scale(1.1);
+}
+
+/* ─────────────── ОТЗЫВЫ ─────────────── */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.review-card {
+  background: var(--white);
+  padding: 32px;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(155,132,201,0.07);
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.review-card:hover { transform: translateY(-4px); }
+
+.review-card::before {
+  content: '"';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 6rem;
+  color: var(--lavender-light);
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  line-height: 1;
+}
+
+.review-stars { color: #f0b27a; font-size: 1rem; margin-bottom: 14px; letter-spacing: 2px; }
+
+/* =====================================================
+   ОТЗЫВЫ — замените текст, имя, дату внутри карточек
+   ===================================================== */
+.review-text {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.review-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--lavender), var(--blush));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.review-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.review-date {
+  font-size: 0.72rem;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+/* ─────────────── КОНТАКТЫ ─────────────── */
+.contact-section {
+  background: linear-gradient(135deg, var(--lavender-light) 0%, var(--blush) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-section::before {
+  content: '❀';
+  position: absolute;
+  font-size: 20rem;
+  color: rgba(155,132,201,0.06);
+  top: -60px;
+  right: -60px;
+  pointer-events: none;
+}
+
+.contact-section::after {
+  content: '✿';
+  position: absolute;
+  font-size: 15rem;
+  color: rgba(240,217,213,0.1);
+  bottom: -40px;
+  left: -40px;
+  pointer-events: none;
+}
+
+.contact-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  position: relative;
+  z-index: 2;
+}
+
+/* =====================================================
+   БЛОК КОНТАКТОВ — замените данные здесь:
+   Адрес, телефон, время работы, email
+   ===================================================== */
+.contact-info h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: var(--text-dark);
+  line-height: 1.1;
+  margin-bottom: 30px;
+}
+
+.contact-info h2 em { font-style: italic; color: var(--lavender-deep); }
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.contact-icon {
+  width: 42px;
+  height: 42px;
+  background: var(--white);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.contact-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--lavender-deep);
+  margin-bottom: 2px;
+}
+
+.contact-val {
+  font-size: 0.92rem;
+  color: var(--text-dark);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ─────────────── КНОПКИ СВЯЗИ ─────────────── */
+.contact-btns { display: flex; flex-direction: column; gap: 14px; padding-top: 10px; }
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 24px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.btn-wa {
+  background: #25D366;
+  color: var(--white);
+}
+
+.btn-wa:hover { background: #1da851; transform: translateY(-2px); }
+
+.btn-tg {
+  background: #229ED9;
+  color: var(--white);
+}
+
+.btn-tg:hover { background: #1a88ba; transform: translateY(-2px); }
+
+.btn-phone {
+  background: var(--white);
+  color: var(--text-dark);
+  border: 1.5px solid var(--lavender);
+}
+
+.btn-phone:hover { background: var(--lavender-light); transform: translateY(-2px); }
+
+.btn-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.btn-phone .btn-icon { background: var(--lavender-light); }
+
+.btn-label { display: flex; flex-direction: column; }
+.btn-label-main { font-size: 0.88rem; font-weight: 500; line-height: 1; }
+.btn-label-sub { font-size: 0.7rem; opacity: 0.8; margin-top: 2px; letter-spacing: 0.05em; }
+
+/* ─────────────── ПОЛОСА ДОВЕРИЯ ─────────────── */
+.trust-bar {
+  background: var(--text-dark);
+  padding: 28px 5%;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--lavender-light);
+}
+
+.trust-icon { font-size: 1.4rem; }
+
+.trust-text {
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+/* ─────────────── ФУТЕР ─────────────── */
+footer {
+  background: var(--text-dark);
+  border-top: 1px solid rgba(201,184,232,0.15);
+  padding: 40px 5% 30px;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--lavender-light);
+  margin-bottom: 12px;
+}
+
+.footer-logo em { font-style: italic; color: var(--lavender); }
+
+/* =====================================================
+   КОПИРАЙТ В ФУТЕРЕ — замените год и название
+   ===================================================== */
+.footer-copy {
+  font-size: 0.75rem;
+  color: rgba(201,184,232,0.45);
+  letter-spacing: 0.1em;
+  margin-top: 20px;
+}
+
+/* ─────────────── МОДАЛЬНОЕ ОКНО ─────────────── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(58,46,63,0.5);
+  backdrop-filter: blur(6px);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.active { display: flex; }
+
+.modal {
+  background: var(--white);
+  border-radius: 28px;
+  padding: 40px;
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  animation: modalIn 0.3s ease;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 1.4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-light);
+  line-height: 1;
+}
+
+.modal-flower { font-size: 3rem; margin-bottom: 14px; }
+
+.modal h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.modal-sub {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+.modal-btns { display: flex; flex-direction: column; gap: 12px; }
+
+/* ─────────────── АНИМАЦИИ ПОЯВЛЕНИЯ ─────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─────────────── АДАПТИВ ─────────────── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+  .about-img-wrap { max-width: 320px; margin: 0 auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     НАВИГАЦИЯ
+     ИЗМЕНИТЬ: название магазина, пункты меню
+     ══════════════════════════════════════════ -->
+<nav>
+  <div class="nav-logo">Студия цветов & праздника <em> 101</em></div><!-- ← НАЗВАНИЕ В ШАПКЕ -->
+  <ul class="nav-links">
+    <li><a href="#about">О нас</a></li>
+    <li><a href="#catalog">Каталог</a></li>
+    <li><a href="#reviews">Отзывы</a></li>
+    <li><a href="#contact">Контакты</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO — ГЛАВНЫЙ ЭКРАН
+     ИЗМЕНИТЬ: название, слоган
+     ══════════════════════════════════════════ -->
+<section class="hero">
+  <!-- Летящие лепестки (декор) -->
+  <div class="hero-petals" id="petals"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">✦ Свежие цветы в Уфе ✦</div><!-- ← ПОДПИСЬ НАД ЗАГОЛОВКОМ -->
+    <h1>Студия цветов
+       & 
+      праздника <br><em> 101</em></h1><!-- ← ГЛАВНОЕ НАЗВАНИЕ -->
+    <p class="hero-sub">
+      Создаём нежные букеты, которые говорят<br>
+      о чувствах лучше любых слов
+    </p><!-- ← СЛОГАН / ОПИСАНИЕ -->
+    <div class="hero-btns">
+      <a href="#catalog" class="btn-primary">Смотреть каталог</a>
+      <a href="#contact" class="btn-outline">Связаться с нами</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Листайте вниз
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     О НАС
+     ИЗМЕНИТЬ: заголовок, текст, характеристики
+     ══════════════════════════════════════════ -->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal">
+      <div class="about-img-frame" style="padding:0; overflow:hidden;">
+  <img src="assets/about.jpg"
+       style="width:100%; height:100%; object-fit:cover; display:block;
+              border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;">
+</div>
+      <div class="about-badge">
+        <span class="about-badge-num">5+</span><!-- ← КОЛИЧЕСТВО ЛЕТ -->
+        <span class="about-badge-text">лет на рынке</span>
+      </div>
+    </div>
+
+    <div class="about-text reveal">
+      <div class="section-tag">✦ Наша история</div>
+      <h3>Цветы как<br><em>искусство</em></h3><!-- ← ЗАГОЛОВОК БЛОКА "О НАС" -->
+      <p>
+        Мы — небольшой семейный магазин, в котором каждый букет создаётся
+        с особой любовью и вниманием к деталям. Работаем только со свежими
+        цветами от проверенных поставщиков.
+      </p><!-- ← ПЕРВЫЙ АБЗАЦ "О НАС" -->
+      <p>
+        Поможем выбрать идеальный подарок для любого события —
+        от романтического свидания до корпоративного мероприятия.
+      </p><!-- ← ВТОРОЙ АБЗАЦ "О НАС" -->
+
+      <div class="about-features">
+        <!-- ← ХАРАКТЕРИСТИКИ — добавляйте/убирайте блоки .about-feat -->
+        <div class="about-feat"><div class="feat-dot"></div>Свежие цветы ежедневно</div>
+        <div class="about-feat"><div class="feat-dot"></div>Авторские композиции</div>
+        <div class="about-feat"><div class="feat-dot"></div>Сезонные букеты</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ПОЛОСА ДОВЕРИЯ
+     ИЗМЕНИТЬ: иконки и текст преимуществ
+     ══════════════════════════════════════════ -->
+<div class="trust-bar">
+  <div class="trust-item"><div class="trust-icon">🌿</div><span class="trust-text">Только живые цветы</span></div>
+  <div class="trust-item"><div class="trust-icon">💳</div><span class="trust-text">Удобная оплата</span></div>
+  <div class="trust-item"><div class="trust-icon">🎁</div><span class="trust-text">Красивая упаковка</span></div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     КАТАЛОГ
+     ИЗМЕНИТЬ: товары, цены, описания
+     ДОБАВИТЬ товар: скопируйте один блок
+
+     ══════════════════════════════════════════ -->
+<section class="section section-alt" id="catalog">
+  <div class="section-header reveal">
+    <div class="section-tag">✦ Наши букеты</div>
+    <h2 class="section-title">Каталог <em>цветов</em></h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="catalog-grid">
+
+<!-- ТОВАР 1 -->
+<div class="product-card reveal">
+  <div class="product-img" style="padding:0;">
+    <img src="assets/1.png" alt="Алые розы" style="width:100%;height:100%;object-fit:cover;">
+    <div class="product-tag new">Хит</div>
+  </div>
+  <div class="product-body">
+    <div class="product-name">Алые розы</div>
+    <div class="product-desc">25 бархатистых роз с зеленью и атласной лентой</div>
+    <div class="product-footer">
+      <div class="product-price">2 500 ₽</div>
+      <button class="product-btn" onclick="openModal()">＋</button>
+    </div>
+  </div>
+</div>
+
+<!-- ТОВАР 2 -->
+<div class="product-card reveal">
+  <div class="product-img" style="padding:0;">
+    <img src="assets/2.png" alt="Лаванда" style="width:100%;height:100%;object-fit:cover;">
+    <div class="product-tag">Популярное</div>
+  </div>
+  <div class="product-body">
+    <div class="product-name">Лаванда в тумане</div>
+    <div class="product-desc">Пионовидные розы, эустома и нежная лаванда</div>
+    <div class="product-footer">
+      <div class="product-price">3 200 ₽</div>
+      <button class="product-btn" onclick="openModal()">＋</button>
+    </div>
+  </div>
+</div>
+
+<!-- ТОВАР 3 -->
+<div class="product-card reveal">
+  <div class="product-img" style="padding:0;">
+    <img src="assets/3.png" alt="Весенний рассвет" style="width:100%;height:100%;object-fit:cover;">
+    <div class="product-tag new">Новинка</div>
+  </div>
+  <div class="product-body">
+    <div class="product-name">Весенний рассвет</div>
+    <div class="product-desc">Тюльпаны, нарциссы и мимоза</div>
+    <div class="product-footer">
+      <div class="product-price">1 800 ₽</div>
+      <button class="product-btn" onclick="openModal()">＋</button>
+    </div>
+  </div>
+</div>
+
+<!-- ТОВАР 4 -->
+<div class="product-card reveal">
+  <div class="product-img" style="padding:0;">
+    <img src="assets/4.png" alt="Пионы" style="width:100%;height:100%;object-fit:cover;">
+  </div>
+  <div class="product-body">
+    <div class="product-name">Монобукет пионов</div>
+    <div class="product-desc">15 сортовых пионов</div>
+    <div class="product-footer">
+      <div class="product-price">4 100 ₽</div>
+      <button class="product-btn" onclick="openModal()">＋</button>
+    </div>
+  </div>
+</div>
+
+<!-- ТОВАР 5 -->
+<div class="product-card reveal">
+  <div class="product-img" style="padding:0;">
+    <img src="assets/5.png" alt="Нежность" style="width:100%;height:100%;object-fit:cover;">
+  </div>
+  <div class="product-body">
+    <div class="product-name">Нежность</div>
+    <div class="product-desc">Хризантемы, фрезия и эвкалипт</div>
+    <div class="product-footer">
+      <div class="product-price">2 100 ₽</div>
+      <button class="product-btn" onclick="openModal()">＋</button>
+    </div>
+  </div>
+</div>
+
+<!-- ТОВАР 6 -->
+<div class="product-card reveal">
+  <div class="product-img" style="padding:0;">
+    <img src="assets/6.png" alt="Свадебный букет" style="width:100%;height:100%;object-fit:cover;">
+  </div>
+  <div class="product-body">
+    <div class="product-name">Свадебный букет</div>
+    <div class="product-desc">Индивидуальный заказ</div>
+    <div class="product-footer">
+      <div class="product-price">от 5 000 ₽</div>
+      <button class="product-btn" onclick="openModal()">＋</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</section>
+
+<!-- ══════════════════════════════════════════
+     ОТЗЫВЫ
+     ИЗМЕНИТЬ: текст отзыва, имя, дату, эмодзи
+     ══════════════════════════════════════════ -->
+<section class="section" id="reviews">
+  <div class="section-header reveal">
+    <div class="section-tag">✦ Говорят клиенты</div>
+    <h2 class="section-title">Тёплые <em>отзывы</em></h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="reviews-grid">
+
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">
+        Заказала букет на годовщину — муж был в восторге! Цветы простояли почти
+        две недели. Спасибо за такую красоту и профессиональную упаковку.
+      </p><!-- ← ТЕКСТ ОТЗЫВА -->
+      <div class="review-author">
+        <div class="review-avatar">👩</div><!-- ← ЭМОДЗИ АВАТАРА -->
+        <div>
+          <div class="review-name">Анна М.</div><!-- ← ИМЯ -->
+          <div class="review-date">10 января 2025</div><!-- ← ДАТА -->
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">
+      Очень крутая работа! Спасибо 
+      Букет из пионов — просто чудо, жена была очень рада.
+      </p>
+      <div class="review-author">
+        <div class="review-avatar">👨</div>
+        <div>
+          <div class="review-name">Дмитрий К.</div>
+          <div class="review-date">22 февраля 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">
+        Потрясающие флористы! Объяснила концепцию — и они сделали именно то, что
+        я хотела. Свадебный букет получился как в мечтах. Рекомендую всем!
+      </p>
+      <div class="review-author">
+        <div class="review-avatar">👰</div>
+        <div>
+          <div class="review-name">Марина Л.</div>
+          <div class="review-date">14 апреля 2025</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     КОНТАКТЫ
+     !! ГЛАВНАЯ СЕКЦИЯ ДЛЯ ИЗМЕНЕНИЯ !!
+     Замените: адрес, телефон, время, email,
+     ссылки на мессенджеры
+     ══════════════════════════════════════════ -->
+<section class="section contact-section" id="contact">
+  <div class="contact-wrap">
+
+    <div class="contact-info reveal">
+      <h2>Свяжитесь<br>с <em>нами</em></h2>
+
+      <!-- АДРЕС -->
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Адрес</div>
+          <div class="contact-val">
+            ул. Цветочная, 12, офис 3<br>
+            Уфа, 123456
+          </div><!-- ← ЗАМЕНИТЕ АДРЕС -->
+        </div>
+      </div>
+
+      <!-- ТЕЛЕФОН -->
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Телефон</div>
+          <div class="contact-val">+7 (999) 123-45-67</div><!-- ← ЗАМЕНИТЕ ТЕЛЕФОН -->
+        </div>
+      </div>
+
+      <!-- ВРЕМЯ РАБОТЫ -->
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-label">Время работы</div>
+          <div class="contact-val">Пн–Вс: 9:00 — 21:00</div><!-- ← ЗАМЕНИТЕ ВРЕМЯ РАБОТЫ -->
+        </div>
+      </div>
+
+      <!-- EMAIL -->
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-val">hello@labellefleur.ru</div><!-- ← ЗАМЕНИТЕ EMAIL -->
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-btns reveal">
+      <p style="font-size:0.82rem; color:var(--text-mid); margin-bottom:8px; letter-spacing:0.08em; text-transform:uppercase; font-size:0.7rem;">Написать или позвонить:</p>
+
+      <!-- =====================================================
+           КНОПКА WHATSAPP
+           ИЗМЕНИТЬ: замените 79991234567 на ваш номер
+           Формат: код страны + номер без пробелов и символов
+           ===================================================== -->
+      <a class="contact-btn btn-wa"
+         href="https://wa.me/79991234567?text=Здравствуйте!%20Хочу%20заказать%20букет"
+         target="_blank">
+        <div class="btn-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </div>
+        <div class="btn-label">
+          <span class="btn-label-main">WhatsApp</span>
+          <span class="btn-label-sub">Написать сообщение</span>
+        </div>
+      </a>
+
+      <!-- =====================================================
+           КНОПКА TELEGRAM
+           ИЗМЕНИТЬ: замените labellefleur на ваш юзернейм
+           ===================================================== -->
+      <a class="contact-btn btn-tg"
+         href="https://t.me/labellefleur"
+         target="_blank">
+        <div class="btn-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+          </svg>
+        </div>
+        <div class="btn-label">
+          <span class="btn-label-main">Telegram</span>
+          <span class="btn-label-sub">Написать в чат</span>
+        </div>
+      </a>
+
+      <!-- =====================================================
+           КНОПКА ЗВОНОК
+           ИЗМЕНИТЬ: замените номер в href="tel:..."
+           ===================================================== -->
+      <a class="contact-btn btn-phone" href="tel:+79991234567">
+        <div class="btn-icon">📞</div>
+        <div class="btn-label">
+          <span class="btn-label-main" style="color:var(--text-dark);">+7 (999) 123-45-67</span><!-- ← ТЕЛЕФОН -->
+          <span class="btn-label-sub" style="color:var(--text-light);">Позвонить нам</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ФУТЕР
+     ИЗМЕНИТЬ: название магазина, год
+     ══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">Студия цветов & праздника<em> 101</em></div><!-- ← НАЗВАНИЕ В ФУТЕРЕ -->
+  <div style="font-size:0.78rem; color:rgba(201,184,232,0.5); letter-spacing:0.1em; margin-top:8px;">
+    Свежие цветы • Авторские букеты • Фирменный стиль
+  </div>
+  <div class="footer-copy">© 2025 Студия цветов & праздника 101. Все права защищены.</div><!-- ← ГОД И НАЗВАНИЕ -->
+</footer>
+
+<!-- ══════════════════════════════════════════
+     МОДАЛЬНОЕ ОКНО "ЗАКАЗАТЬ"
+     ИЗМЕНИТЬ: текст, ссылки на мессенджеры
+     ══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal').classList.remove('active')">×</button>
+    <div class="modal-flower">💐</div>
+    <h3>Заказать букет</h3>
+    <p class="modal-sub">Свяжитесь с нами любым удобным способом — мы оперативно ответим!</p>
+    <div class="modal-btns">
+      <a class="contact-btn btn-wa"
+         href="https://wa.me/79991234567?text=Хочу%20заказать%20букет"
+         target="_blank"><!-- ← ТОТ ЖЕ НОМЕР WHATSAPP -->
+        <div class="btn-icon">💬</div>
+        <div class="btn-label">
+          <span class="btn-label-main">WhatsApp</span>
+          <span class="btn-label-sub">Написать сообщение</span>
+        </div>
+      </a>
+      <a class="contact-btn btn-tg" href="https://t.me/labellefleur" target="_blank"><!-- ← ТОТ ЖЕ TELEGRAM -->
+        <div class="btn-icon">✈️</div>
+        <div class="btn-label">
+          <span class="btn-label-main">Telegram</span>
+          <span class="btn-label-sub">Написать в чат</span>
+        </div>
+      </a>
+      <a class="contact-btn btn-phone" href="tel:+79991234567"><!-- ← ТОТ ЖЕ ТЕЛЕФОН -->
+        <div class="btn-icon">📞</div>
+        <div class="btn-label">
+          <span class="btn-label-main" style="color:var(--text-dark);">Позвонить</span>
+          <span class="btn-label-sub" style="color:var(--text-light);">+7 (999) 123-45-67</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ─── Лепестки в hero ─── */
+const emojis = ['🌸','🌺','✿','❀','🌷','💮'];
+const container = document.getElementById('petals');
+for (let i = 0; i < 22; i++) {
+  const el = document.createElement('div');
+  el.className = 'petal';
+  el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  el.style.left = Math.random() * 100 + '%';
+  el.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+  el.style.animationDuration = (8 + Math.random() * 14) + 's';
+  el.style.animationDelay = (Math.random() * 12) + 's';
+  container.appendChild(el);
+}
+
+/* ─── Появление элементов при скролле ─── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ─── Модальное окно ─── */
+function openModal() {
+  document.getElementById('modal').classList.add('active');
+}
+
+function closeModal(e) {
+  if (e.target.id === 'modal') document.getElementById('modal').classList.remove('active');
+}
+</script>
+
+</body>
+</html>
